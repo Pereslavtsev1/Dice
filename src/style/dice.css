@@ -8,7 +8,7 @@
 
 @keyframes rolling {
   50% {
-    transform: rotateX(455deg) rotateY(455deg);
+    transform: rotateX(1060deg) rotateY(1060deg);
   }
 }
 
@@ -70,7 +70,7 @@
 .front::after {
   width: 30px;
   height: 30px;
-  background: #f63330;
+  background: #131210;
   margin: -15px 0 0 -15px;
 }
 
