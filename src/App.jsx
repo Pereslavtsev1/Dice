@@ -6,31 +6,35 @@ import PlayerArea from "./components/PlayerArea";
 import RollButton from "./components/RollButton";
 function App() {
   const [faces, setFaces] = useState([1, 1, 1]);
-  let [firstCount, setFirstCount] = useState(0);
-  let [firstPlayerScore, setFirstPlayerScore] = useState(0);
-  let [secondPlayerScore, setSecondPlayerScore] = useState(0);
-  let [order, setOrder] = useState(0);
+  const [firstCount, setFirstCount] = useState(0);
+  const [firstPlayerScore, setFirstPlayerScore] = useState(0);
+  const [secondPlayerScore, setSecondPlayerScore] = useState(0);
+  const [order, setOrder] = useState(0);
 
   const rollDice = () => {
     const newFaces = faces.map(() => Math.floor(Math.random() * 6) + 1);
     setFaces(newFaces);
-    console.log(newFaces);
 
-    const count = newFaces.reduce((prev, cur) => prev + cur, 0);
+    console.log("Бросок кубиков:", newFaces);
+    const currentCount = newFaces.reduce((prev, cur) => prev + cur, 0);
 
-    if (order === 0) {
-      setFirstCount(count);
-      setOrder(1);
-    } else {
-      setOrder(0);
-      setFirstPlayerScore((prevScore) =>
-        firstCount > count ? prevScore + 1 : prevScore,
-      );
-      setSecondPlayerScore((prevScore) =>
-        firstCount < count ? prevScore + 1 : prevScore,
-      );
-      setFirstCount(0);
-    }
+    setTimeout(() => {
+      if (order === 0) {
+        setFirstCount(currentCount);
+        setOrder(1);
+      } else {
+        setOrder(0);
+        setFirstPlayerScore((prevScore) =>
+          firstCount > currentCount ? prevScore + 1 : prevScore,
+        );
+
+        setSecondPlayerScore((prevScore) =>
+          firstCount < currentCount ? prevScore + 1 : prevScore,
+        );
+
+        setFirstCount(0);
+      }
+    }, 4050);
   };
 
   return (

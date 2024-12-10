@@ -6,7 +6,7 @@ const PlayerArea = ({ number, score, reversed }) => {
       >
         <div className="playerArea relative flex h-20 w-72 items-center justify-center rounded-lg border-4 border-solid border-main bg-secondary">
           <h1
-            className={`text-2xl ${reversed ? "rotate-180 transform pl-20" : "pr-20"} font-bold`}
+            className={`text-xl ${reversed ? "rotate-180 transform pl-20" : "pr-20"} font-poppins font-bold`}
           >
             Player {number}
           </h1>
@@ -15,7 +15,7 @@ const PlayerArea = ({ number, score, reversed }) => {
             className={`circle-overlay absolute right-[-20px] top-[50%] flex h-28 w-28 translate-y-[-50%] items-center justify-center rounded-full border-4 border-solid border-main bg-secondary`}
           >
             <h1
-              className={`text-3xl ${reversed ? "rotate-180 transform" : ""} font-bold`}
+              className={`text-3xl ${reversed ? "rotate-180 transform" : ""} font-poppins font-bold`}
             >
               {score}
             </h1>
