@@ -40,9 +40,9 @@ function App() {
   return (
     <main className="flex flex-col justify-between overflow-hidden">
       <Header />
-      <div className="flex items-center justify-between pt-40">
+      <div className="flex items-center justify-between">
         <PlayerArea number={1} score={firstPlayerScore} />
-        <div className="mt-10 flex w-1/3 flex-col items-center rounded-2xl bg-gray-200 p-5 shadow-lg">
+        <div className="flex w-1/3 flex-col items-center rounded-2xl bg-gray-200 p-5 shadow-lg">
           <div className="flex flex-row justify-center">
             {faces.map((face, index) => (
               <Dice key={index} face={face} />
