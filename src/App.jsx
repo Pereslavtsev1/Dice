@@ -6,6 +6,7 @@ import PlayerArea from "./components/PlayerArea";
 import RollButton from "./components/RollButton";
 function App() {
   const [faces, setFaces] = useState([1, 1, 1]);
+  const [winner, setWinner] = useState(false)
   const [firstCount, setFirstCount] = useState(0);
   const [firstPlayerScore, setFirstPlayerScore] = useState(0);
   const [secondPlayerScore, setSecondPlayerScore] = useState(0);
@@ -17,7 +18,6 @@ function App() {
 
     console.log("Бросок кубиков:", newFaces);
     const currentCount = newFaces.reduce((prev, cur) => prev + cur, 0);
-
     setTimeout(() => {
       if (order === 0) {
         setFirstCount(currentCount);
@@ -35,11 +35,25 @@ function App() {
         setFirstCount(0);
       }
     }, 4050);
-  };
+  }
+
+  const isWin = () => {
+    if(firstPlayerScore === 3 || secondPlayerScore === 3){
+      setWinner(true)
+      return winner
+    }
+  }
+
+  const restart = () => {
+    setFirstPlayerScore(0);
+    setSecondPlayerScore(0)
+  }
 
   return (
     <main className="flex flex-col justify-between overflow-hidden">
       <Header />
+      {firstPlayerScore === 3 ? <div className="flex justify-center pb-4"><p className="bg-secondary p-10 rounded-lg font-poppins text-xl font-bold">The winner is Player 1</p></div> :
+      secondPlayerScore === 3 ? <div className="flex justify-center pb-4"><p className="bg-secondary p-10 rounded-lg font-poppins text-xl font-bold">The winner is Player 2</p></div> : <></>}
       <div className="flex items-center justify-between">
         <PlayerArea number={1} score={firstPlayerScore} />
         <div className="flex w-1/3 flex-col items-center rounded-2xl bg-gray-200 p-5 shadow-lg">
@@ -49,7 +63,7 @@ function App() {
             ))}
           </div>
           <div className="mt-5">
-            <RollButton onRoll={rollDice} />
+            <RollButton onRoll={rollDice} win = {isWin} restart={restart}/>
           </div>
         </div>
         <PlayerArea number={2} score={secondPlayerScore} reversed={true} />

@@ -1,11 +1,13 @@
 import { useState } from "react";
 
-export const RollButton = ({ onRoll }) => {
+export const RollButton = ({ onRoll, win, restart}) => {
   const [isRolling, setIsRolling] = useState(false);
 
   const handleClick = () => {
     if (isRolling) return;
-
+    if(win() === true){
+      restart()
+    }
     setIsRolling(true);
     const diceElements = document.querySelectorAll(".dice");
     onRoll();
@@ -27,7 +29,7 @@ export const RollButton = ({ onRoll }) => {
       onClick={handleClick}
       disabled={isRolling}
     >
-      Roll Dice
+     {win() ? 'Start a new game' : 'Roll Dice'}
     </button>
   );
 };
