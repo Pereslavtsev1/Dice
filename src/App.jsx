@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Counter from "./components/Counter";
 import Dice from "./components/Dice";
+import Footer from "./components/Footer";
 import Header from "./components/Header";
 import PlayerArea from "./components/PlayerArea";
 import RollButton from "./components/RollButton";
@@ -14,6 +14,7 @@ function App() {
   const rollDice = () => {
     const newFaces = faces.map(() => Math.floor(Math.random() * 6) + 1);
     setFaces(newFaces);
+    console.log(newFaces);
 
     const count = newFaces.reduce((prev, cur) => prev + cur, 0);
 
@@ -35,10 +36,7 @@ function App() {
   return (
     <main className="flex flex-col justify-between overflow-hidden">
       <Header />
-      <div className="mt-20 flex items-center justify-center">
-        <Counter count={firstCount} />
-      </div>
-      <div className="flex items-center justify-between pt-36">
+      <div className="flex items-center justify-between pt-40">
         <PlayerArea number={1} score={firstPlayerScore} />
         <div className="mt-10 flex w-1/3 flex-col items-center rounded-2xl bg-gray-200 p-5 shadow-lg">
           <div className="flex flex-row justify-center">
@@ -52,6 +50,7 @@ function App() {
         </div>
         <PlayerArea number={2} score={secondPlayerScore} reversed={true} />
       </div>
+      <Footer />
     </main>
   );
 }

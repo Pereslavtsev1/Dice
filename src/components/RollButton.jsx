@@ -4,13 +4,14 @@ export const RollButton = ({ onRoll }) => {
     diceElements.forEach((diceElement) => {
       diceElement.style.animation = "rolling 4s";
     });
+    console.log("Active");
 
     setTimeout(() => {
       diceElements.forEach((diceElement) => {
         diceElement.style.animation = "none";
       });
-      onRoll();
     }, 4050);
+    onRoll();
   };
 
   return (
