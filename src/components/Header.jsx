@@ -24,8 +24,8 @@ const Header = () => {
       </div>
       <div className="flex w-1/2">
         <div className="relative flex pl-10">
-          <GarlandSvg className="h-[20rem] w-[20rem] scale-x-[-1] transform" />
-          <GarlandSvg className="h-[17rem] w-[17rem]" />
+          <GarlandSvg className="h-[18rem] w-[18rem] scale-x-[-1] transform" />
+          <GarlandSvg className="h-[15rem] w-[15rem]" />
         </div>
       </div>
     </div>

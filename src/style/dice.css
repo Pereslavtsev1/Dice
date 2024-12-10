@@ -8,7 +8,7 @@
 
 @keyframes rolling {
   50% {
-    transform: rotateX(1060deg) rotateY(1060deg);
+    transform: rotateX(1160deg) rotateY(1160deg);
   }
 }
 

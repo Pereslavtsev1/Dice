@@ -1,11 +1,7 @@
 const SvgComponent = (props) => (
   <svg
-    fill="#000000"
-    id="Capa_1"
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
-    width="800px"
-    height="800px"
     viewBox="0 0 403.814 403.814"
     xmlSpace="preserve"
     {...props}
