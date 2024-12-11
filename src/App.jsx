@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import PlayerArea from "./components/PlayerArea";
 import RollButton from "./components/RollButton";
+import './style/dice.css'
 function App() {
   const [faces, setFaces] = useState([1, 1, 1]);
   const [winner, setWinner] = useState(false)
@@ -52,12 +53,14 @@ function App() {
   return (
     <main className="flex flex-col justify-between overflow-hidden">
       <Header />
-      {firstPlayerScore === 3 ? <div className="flex justify-center pb-4"><p className="bg-secondary p-10 rounded-lg font-poppins text-xl font-bold">The winner is Player 1</p></div> :
-      secondPlayerScore === 3 ? <div className="flex justify-center pb-4"><p className="bg-secondary p-10 rounded-lg font-poppins text-xl font-bold">The winner is Player 2</p></div> : <></>}
-      <div className="flex items-center justify-between">
+      {firstPlayerScore === 3 ? <div className="flex justify-center"><p className="bg-secondary p-10 rounded-lg font-poppins text-xl font-bold">The winner is Player 1</p></div> :
+      secondPlayerScore === 3 ? <div className="flex justify-center"><p className="bg-secondary p-10 rounded-lg font-poppins text-xl font-bold">The winner is Player 2</p></div> : <></>}
+      <div className="flex items-center p-4 players-center">
+        <div className="player-display">
         <PlayerArea number={1} score={firstPlayerScore} />
+        </div>
         <div className="flex w-1/3 flex-col items-center rounded-2xl bg-gray-200 p-5 shadow-lg">
-          <div className="flex flex-row justify-center">
+          <div className="flex dice-display justify-center">
             {faces.map((face, index) => (
               <Dice key={index} face={face} />
             ))}
@@ -66,7 +69,13 @@ function App() {
             <RollButton onRoll={rollDice} win = {isWin} restart={restart}/>
           </div>
         </div>
+        <div className="player-display">
         <PlayerArea number={2} score={secondPlayerScore} reversed={true} />
+        </div>
+      </div>
+      <div className="mobile-display">
+      <PlayerArea number={1} score={firstPlayerScore} />
+      <PlayerArea number={2} score={secondPlayerScore} reversed={true} />
       </div>
       <Footer />
     </main>

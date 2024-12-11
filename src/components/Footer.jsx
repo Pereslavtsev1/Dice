@@ -12,7 +12,7 @@ const Footer = () => {
   };
 
   return (
-    <div className="flex justify-around">
+    <div className="middle">
       <FooterSvg className="bg-[#646669] fill-main" onClick={handleClick} />
     </div>
   );
